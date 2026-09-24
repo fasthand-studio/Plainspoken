@@ -70,7 +70,7 @@ export default function LabDemo({
                 borderRadius: "8px"
               }}
             >
-              {ruleCategory}
+              {category}
             </span>
           </div>
           <h3 className="text-[19px] font-semibold text-ink leading-tight">
