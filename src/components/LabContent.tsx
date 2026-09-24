@@ -388,23 +388,25 @@ function Demo12() {
 function Demo13() {
   return (
     <LabDemo {...r(13)}>
-      <DemoBlock title="Followed — grain in small badge" variant="followed">
-        <div className="flex flex-col items-center gap-3">
-          <div
-            className="ps-grain ps-superellipse-32 flex items-center justify-center"
-            style={{ width: "48px", height: "48px", opacity: 0.08 }}
-          >
-            <Star size={20} className="text-ink" />
+      <DemoBlock title="Followed — fine noise-textured gradient" variant="followed">
+        <div className="flex flex-col items-center gap-2">
+          <div className="relative overflow-hidden p-3 ps-superellipse-32 bg-gradient-to-br from-neutral-800 to-neutral-950 text-white text-[13px] font-medium border border-neutral-700 shadow-sm flex items-center justify-center min-w-[140px]">
+            {/* Grain / Noise Overlay */}
+            <div
+              className="absolute inset-0 ps-grain opacity-25 pointer-events-none"
+              style={{ backgroundSize: "3px 3px" }}
+            />
+            <span className="relative z-10">Grain textured</span>
           </div>
-          <span className="text-[13px] text-ink-muted">Tiny decorative badge</span>
+          <span className="text-[12px] text-ink-muted">Subtle dotted noise overlay</span>
         </div>
       </DemoBlock>
-      <DemoBlock title="Violated — grain across section" variant="violated">
-        <div
-          className="ps-grain w-full h-full flex items-center justify-center"
-          style={{ opacity: 0.12 }}
-        >
-          <span className="text-[13px] text-ink-muted">Large background fill</span>
+      <DemoBlock title="Violated — smooth gradient" variant="violated">
+        <div className="flex flex-col items-center gap-2">
+          <div className="p-3 ps-superellipse-32 bg-gradient-to-br from-indigo-500 to-purple-600 text-white text-[13px] font-medium shadow-sm flex items-center justify-center min-w-[140px]">
+            <span>Smooth gradient</span>
+          </div>
+          <span className="text-[12px] text-ink-muted">Conventional smooth gradient</span>
         </div>
       </DemoBlock>
     </LabDemo>
@@ -624,8 +626,8 @@ function Demo22() {
 function Demo23() {
   return (
     <LabDemo {...r(23)}>
-      <DemoBlock title="Followed — group of four" variant="followed">
-        <div className="grid grid-cols-2 gap-2 w-full">
+      <DemoBlock title="Followed — four items" variant="followed">
+        <div className="grid grid-cols-4 gap-2 w-full">
           {["A", "B", "C", "D"].map((x) => (
             <div
               key={x}
