@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ps-cream: #f5f3ef;
+    --ps-cream-dark: #ebe8e1;
+    --ps-surface: #ffffff;
+    --ps-border: #d1d1d1;
+    --ps-border-light: #e2e0db;
+    --ps-text: #1a1a1a;
+    --ps-text-muted: #6b6b6b;
+    --ps-text-light: #9a9a9a;
+    --ps-blue: #0a84ff;
+    --ps-green: #34c759;
+    --ps-orange: #ff9500;
+    --ps-purple: #af52de;
+    --ps-red: #ff3b30;
+    --ps-blue-tint: #e8f1ff;
+    --ps-green-tint: #e6f7ea;
+    --ps-orange-tint: #fff3e0;
+    --ps-red-tint: #ffebeb;
+    --ps-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--ps-font);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ps-text);
+    background-color: var(--ps-cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ps-font);
+    line-height: 1.2;
+  }
+
+  ::selection {
+    background: var(--ps-blue);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* Superellipse curvature system — radius = H/2, corner-shape = superellipse(1.5) */
+  .ps-superellipse-32 {
+    border-radius: 16px;
+    corner-shape: superellipse(1.5);
+  }
+  .ps-superellipse-44 {
+    border-radius: 22px;
+    corner-shape: superellipse(1.5);
+  }
+  .ps-superellipse-40 {
+    border-radius: 20px;
+    corner-shape: superellipse(1.5);
+  }
+  .ps-superellipse-48 {
+    border-radius: 24px;
+    corner-shape: superellipse(1.5);
+  }
+
+  /* Button base — 32px height, 16px radius */
+  .ps-btn {
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 16px;
+    corner-shape: superellipse(1.5);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: opacity 0.1s ease, background-color 0.1s ease;
+    user-select: none;
+  }
+  .ps-btn:active { opacity: 0.7; }
+  .ps-btn:disabled { opacity: 0.4; cursor: default; }
+
+  .ps-btn-primary {
+    background: var(--ps-text);
+    color: #fff;
+  }
+  .ps-btn-secondary {
+    background: var(--ps-blue-tint);
+    color: var(--ps-blue);
+  }
+  .ps-btn-outline {
+    background: transparent;
+    border-color: var(--ps-border);
+    color: var(--ps-text);
+  }
+  .ps-btn-plain {
+    background: transparent;
+    color: var(--ps-text);
+  }
+  .ps-btn-destructive {
+    background: var(--ps-red);
+    color: #fff;
+  }
+
+  /* CTA — 44px height, 22px radius */
+  .ps-cta {
+    height: 44px;
+    padding: 0 22px;
+    border-radius: 22px;
+    corner-shape: superellipse(1.5);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: opacity 0.1s ease, background-color 0.1s ease;
+    user-select: none;
+  }
+  .ps-cta:active { opacity: 0.7; }
+
+  .ps-cta-primary {
+    background: var(--ps-text);
+    color: #fff;
+  }
+  .ps-cta-secondary {
+    background: var(--ps-blue-tint);
+    color: var(--ps-blue);
+  }
+  .ps-cta-outline {
+    background: transparent;
+    border-color: var(--ps-border);
+    color: var(--ps-text);
+  }
+
+  /* Card surface */
+  .ps-card {
+    background: var(--ps-surface);
+    border: 1px solid var(--ps-border-light);
+    border-radius: 20px;
+    corner-shape: superellipse(1.5);
+  }
+
+  /* Input */
+  .ps-input {
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    corner-shape: superellipse(1.5);
+    border: 1px solid var(--ps-border);
+    background: var(--ps-surface);
+    font-size: 17px;
+    font-family: var(--ps-font);
+    color: var(--ps-text);
+    outline: none;
+  }
+  .ps-input:focus {
+    border-color: var(--ps-blue);
+  }
+
+  /* Focus ring */
+  .ps-focus:focus-visible {
+    outline: 2px solid var(--ps-blue);
+    outline-offset: 2px;
+  }
+
+  /* Nav link */
+  .ps-nav-link {
+    height: 32px;
+    padding: 0 14px;
+    border-radius: 16px;
+    corner-shape: superellipse(1.5);
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    border: 1px solid transparent;
+    color: var(--ps-text);
+    background: transparent;
+  }
+  .ps-nav-link:hover { background: var(--ps-cream-dark); }
+  .ps-nav-link[data-active="true"] {
+    background: var(--ps-text);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .ps-text-muted { color: var(--ps-text-muted); }
+  .ps-text-light { color: var(--ps-text-light); }
+  .ps-bg-cream { background: var(--ps-cream); }
+  .ps-bg-cream-dark { background: var(--ps-cream-dark); }
+  .ps-bg-surface { background: var(--ps-surface); }
+  .ps-border-c { border-color: var(--ps-border); }
+  .ps-border-cl { border-color: var(--ps-border-light); }
+  .ps-no-shadow { box-shadow: none !important; }
+
+  /* Violation demo helpers */
+  .ps-violation-shadow { box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+  .ps-violation-gradient { background: linear-gradient(135deg, #667eea, #764ba2); }
+  .ps-violation-blur { backdrop-filter: blur(12px); background: rgba(255,255,255,0.5); }
+  .ps-violation-serif { font-family: Georgia, "Times New Roman", serif; }
+  .ps-violation-mono { font-family: "SF Mono", Monaco, monospace; }
+  .ps-violation-ornament { font-family: "Brush Script MT", cursive; }
+  .ps-violation-bouncy { animation: ps-bouncy 0.6s ease infinite; }
+  .ps-violation-slidein { animation: ps-slidein 0.5s ease infinite; }
+
+  @keyframes ps-bouncy {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.05); }
+  }
+  @keyframes ps-slidein {
+    0% { transform: translateX(-20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+
+  .ps-grain {
+    background-image:
+      repeating-conic-gradient(#1a1a1a 0% 25%, transparent 0% 50%);
+    background-size: 4px 4px;
+  }
+}
