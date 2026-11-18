@@ -1,4 +1,5 @@
-import { Icon } from "icon-tree-animate";
+import CopyIcon from "icon-tree-animate/icons/copy";
+import HeartIcon from "icon-tree-animate/icons/heart";
 
 type AnimatedIconName = "copy" | "heart";
 type IconMode = "static" | "loop" | "onClick" | "hover";
@@ -22,6 +23,8 @@ export default function IconTreeAnimated({
   bindId,
   resetAfterPlay,
 }: IconTreeAnimatedProps) {
+  const Icon = name === "copy" ? CopyIcon : HeartIcon;
+
   return (
     <span
       aria-hidden="true"
