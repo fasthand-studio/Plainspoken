@@ -47,6 +47,9 @@ export default function Nav({ current, onNavigate }: NavProps) {
               {l.label}
             </button>
           ))}
+          <a href="/plainspoken-skill.md" download="plainspoken-skill.md" className="ps-nav-link ps-focus">
+            Get the skill
+          </a>
         </div>
 
         <button
@@ -72,6 +75,14 @@ export default function Nav({ current, onNavigate }: NavProps) {
                 {l.label}
               </button>
             ))}
+            <a
+              href="/plainspoken-skill.md"
+              download="plainspoken-skill.md"
+              onClick={() => setOpen(false)}
+              className="ps-nav-link ps-focus w-full justify-start"
+            >
+              Get the skill
+            </a>
           </div>
         </div>
       )}
