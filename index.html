@@ -2,16 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
 
     <!-- ── Primary meta ── -->
-    <title>PLAINspoken — Design System by Fasthand Studio</title>
-    <meta name="description" content="PLAINspoken is a UI/UX design system of 24 opinionated rules built by Fasthand Studio. No shadows, no gradients, no fluff — just structure, restraint, and consistency." />
-    <meta name="keywords" content="design system, UI design, UX design, Fasthand Studio, PLAINspoken, design rules, component library, ui guidelines, ux guidelines, typography, button design" />
+    <title>Plainspoken Design System for Clear Interfaces | Fasthand</title>
+    <meta name="description" content="Plainspoken is Fasthand Studio’s design system: 25 practical rules for calm, readable interfaces, consistent geometry, thoughtful color, and clear interactions." />
+    <meta name="keywords" content="Fasthand design system, Plainspoken design system, interface design rules, UI design system, calm interface design, readable digital products, design principles" />
     <meta name="author" content="Fasthand Studio" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#f5f3ef" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f5f3ef" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#f5f3ef" />
     <meta name="color-scheme" content="light" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
     <!-- ── Canonical ── -->
     <link rel="canonical" href="https://plainspoken-flame.vercel.app/" />
@@ -26,49 +29,88 @@
     <!-- ── Open Graph ── -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="PLAINspoken" />
-    <meta property="og:title" content="PLAINspoken — Design System by Fasthand Studio" />
-    <meta property="og:description" content="24 opinionated UI/UX design rules. No shadows, no gradients, no fluff. Structure, restraint, and consistency on every surface." />
+    <meta property="og:title" content="Plainspoken Design System for Clear Interfaces | Fasthand" />
+    <meta property="og:description" content="Fasthand Studio’s design system: 25 practical rules for calm, readable interfaces, consistent geometry, thoughtful color, and clear interactions." />
     <meta property="og:url" content="https://plainspoken-flame.vercel.app/" />
     <meta property="og:image" content="https://plainspoken-flame.vercel.app/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:alt" content="PLAINspoken design system — 24 rules by Fasthand Studio" />
+    <meta property="og:image:alt" content="Plainspoken: calm, clear interface design for Fasthand Studio" />
     <meta property="og:locale" content="en_US" />
 
     <!-- ── Twitter / X Card ── -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@fasthandbd" />
     <meta name="twitter:creator" content="@fasthandbd" />
-    <meta name="twitter:title" content="PLAINspoken — Design System by Fasthand Studio" />
-    <meta name="twitter:description" content="24 opinionated UI/UX design rules. No shadows, no gradients, no fluff. Structure, restraint, and consistency on every surface." />
+    <meta name="twitter:title" content="Plainspoken Design System for Clear Interfaces | Fasthand" />
+    <meta name="twitter:description" content="Fasthand Studio’s design system: 25 practical rules for calm, readable interfaces, consistent geometry, thoughtful color, and clear interactions." />
     <meta name="twitter:image" content="https://plainspoken-flame.vercel.app/og-image.png" />
-    <meta name="twitter:image:alt" content="PLAINspoken design system — 24 rules by Fasthand Studio" />
+    <meta name="twitter:image:alt" content="Plainspoken: calm, clear interface design for Fasthand Studio" />
 
     <!-- ── JSON-LD Structured Data ── -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "PLAINspoken",
-      "description": "A UI/UX design system of 24 opinionated rules built by Fasthand Studio. No shadows, no gradients, no fluff.",
-      "url": "https://plainspoken-flame.vercel.app/",
-      "author": {
-        "@type": "Organization",
-        "name": "Fasthand Studio",
-        "url": "https://fasthandbd.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Fasthand Studio",
-        "url": "https://fasthandbd.com"
-      },
-      "inLanguage": "en-US"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://plainspoken-flame.vercel.app/#website",
+          "name": "Plainspoken",
+          "url": "https://plainspoken-flame.vercel.app/",
+          "description": "Fasthand Studio’s design system: 25 practical rules for calm, readable interfaces, consistent geometry, thoughtful color, and clear interactions.",
+          "publisher": { "@id": "https://fasthandbd.com/#organization" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://fasthandbd.com/#organization",
+          "name": "Fasthand Studio",
+          "url": "https://fasthandbd.com"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://plainspoken-flame.vercel.app/#webpage",
+          "url": "https://plainspoken-flame.vercel.app/",
+          "name": "Plainspoken Design System for Clear Interfaces",
+          "isPartOf": { "@id": "https://plainspoken-flame.vercel.app/#website" },
+          "about": { "@id": "https://fasthandbd.com/#organization" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://plainspoken-flame.vercel.app/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the Plainspoken design system?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Plainspoken is a set of 25 practical interface design rules made for the Fasthand ecosystem. The Lab demonstrates them, and the Rulebook makes them easy to copy and apply." }
+            },
+            {
+              "@type": "Question",
+              "name": "What makes Plainspoken different?",
+              "acceptedAnswer": { "@type": "Answer", "text": "It favors clear layout, restrained color, system typography, consistent curvature, and immediate feedback. Off-color surfaces are used sparingly when they make content easier to understand." }
+            },
+            {
+              "@type": "Question",
+              "name": "Who is Plainspoken for?",
+              "acceptedAnswer": { "@type": "Answer", "text": "It is for Fasthand teams and collaborators creating calm, coherent digital products, and for anyone who wants a straightforward starting point for interface decisions." }
+            }
+          ]
+        }
+      ]
     }
     </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <main>
+        <h1>Calm, clear interfaces for Fasthand.</h1>
+        <p>Plainspoken is Fasthand Studio’s design system: 25 practical rules for readable interfaces, consistent geometry, thoughtful color, and clear interactions.</p>
+        <p>Explore the Lab to see the rules in use, or read the Rulebook to copy and apply them.</p>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

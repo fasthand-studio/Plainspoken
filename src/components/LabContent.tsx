@@ -1,24 +1,8 @@
 import { useState } from "react";
-import {
-  Check,
-  X,
-  Settings,
-  Trash2,
-  Plus,
-  Bell,
-  Search,
-  Heart,
-  Share,
-  Download,
-  Star,
-  AlertTriangle,
-  Mail,
-  User,
-  Lock,
-} from "lucide-react";
 import LabDemo, { DemoBlock } from "./LabDemo";
 import { rules } from "@/data/rules";
 import CopyButton from "./CopyButton";
+import IconTreeIcon from "@/components/IconTreeIcon";
 
 /* Helper to get rule by id */
 const r = (id: number) => rules.find((x) => x.id === id)!;
@@ -48,14 +32,14 @@ function Demo2() {
     <LabDemo {...r(2)}>
       <DemoBlock title="Followed — dense on mobile" variant="followed">
         <div className="flex flex-col gap-2 w-full" style={{ maxWidth: "220px" }}>
-          <div className="flex items-center gap-2 p-2 border border-border-light ps-superellipse-32" style={{ background: "var(--ps-cream)" }}>
+          <div className="flex items-center gap-2 p-2 bg-cream-dark ps-superellipse-32">
             <div className="w-7 h-7 ps-superellipse-32 bg-cream-dark" />
             <div className="flex-1">
               <div className="text-[13px] font-semibold">Item A</div>
               <div className="text-[11px] text-ink-muted">Tight, focused</div>
             </div>
           </div>
-          <div className="flex items-center gap-2 p-2 border border-border-light ps-superellipse-32 bg-cream">
+          <div className="flex items-center gap-2 p-2 bg-cream-dark ps-superellipse-32">
             <div className="w-7 h-7 ps-superellipse-32 bg-cream-dark" />
             <div className="flex-1">
               <div className="text-[13px] font-semibold">Item B</div>
@@ -66,14 +50,14 @@ function Demo2() {
       </DemoBlock>
       <DemoBlock title="Violated — too much spacing" variant="violated">
         <div className="flex flex-col gap-6 w-full" style={{ maxWidth: "220px" }}>
-          <div className="flex items-center gap-2 p-4 border border-border-light ps-superellipse-32" style={{ background: "var(--ps-cream)" }}>
+          <div className="flex items-center gap-2 p-4 bg-cream-dark ps-superellipse-32">
             <div className="w-7 h-7 ps-superellipse-32 bg-cream-dark" />
             <div className="flex-1">
               <div className="text-[13px] font-semibold">Item A</div>
               <div className="text-[11px] text-ink-muted">Disconnected</div>
             </div>
           </div>
-          <div className="flex items-center gap-2 p-4 border border-border-light ps-superellipse-32" style={{ background: "var(--ps-cream)" }}>
+          <div className="flex items-center gap-2 p-4 bg-cream-dark ps-superellipse-32">
             <div className="w-7 h-7 ps-superellipse-32 bg-cream-dark" />
             <div className="flex-1">
               <div className="text-[13px] font-semibold">Item B</div>
@@ -157,17 +141,14 @@ function Demo5() {
 function Demo6() {
   return (
     <LabDemo {...r(6)}>
-      <DemoBlock title="Followed — 1px border" variant="followed">
-        <div className="w-full p-4 border border-border-light ps-superellipse-32 bg-surface flex items-center justify-center">
-          <span className="text-[15px]">Depth via outline</span>
+      <DemoBlock title="Followed — off-color only when needed" variant="followed">
+        <div className="w-full p-4 ps-superellipse-32 bg-cream-dark flex items-center justify-center">
+          <span className="text-[15px]">Subtle surface difference</span>
         </div>
       </DemoBlock>
-      <DemoBlock title="Violated — drop shadow" variant="violated">
-        <div
-          className="w-full p-4 ps-superellipse-32 bg-surface flex items-center justify-center ps-violation-shadow"
-          style={{ border: "none" }}
-        >
-          <span className="text-[15px]">Depth via shadow</span>
+      <DemoBlock title="Violated — decorative outline" variant="violated">
+        <div className="w-full p-4 ps-superellipse-32 bg-surface flex items-center justify-center" style={{ outline: "2px solid var(--ps-border)" }}>
+          <span className="text-[15px]">Unneeded outline</span>
         </div>
       </DemoBlock>
     </LabDemo>
@@ -180,37 +161,27 @@ function Demo7() {
     <LabDemo {...r(7)}>
       <DemoBlock title="Followed — direct color, opacity feedback" variant="followed">
         <div className="flex items-center gap-4">
-          <Bell
-            size={24}
-            className="text-accent-blue cursor-pointer"
-            style={{ opacity: active ? 0.5 : 1, transition: "opacity 0.1s" }}
-            onClick={() => setActive(!active)}
-          />
-          <Heart
-            size={24}
-            className="text-accent-red cursor-pointer"
-            style={{ opacity: !active ? 0.5 : 1, transition: "opacity 0.1s" }}
-            onClick={() => setActive(!active)}
-          />
-          <Star
-            size={24}
-            className="text-accent-orange cursor-pointer"
-            style={{ transition: "opacity 0.1s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.5")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-          />
+          <button aria-label="Toggle notifications" onClick={() => setActive(!active)} style={{ border: 0, padding: 0, background: "transparent", opacity: active ? 0.5 : 1, transition: "opacity 0.1s" }}>
+            <IconTreeIcon name="notification" color="#0a84ff" size={24} />
+          </button>
+          <button aria-label="Toggle favorite" onClick={() => setActive(!active)} style={{ border: 0, padding: 0, background: "transparent", opacity: !active ? 0.5 : 1, transition: "opacity 0.1s" }}>
+            <IconTreeIcon name="heart" color="#ff3b30" size={24} mode="hover" />
+          </button>
+          <button aria-label="Star" onMouseEnter={(event) => (event.currentTarget.style.opacity = "0.5")} onMouseLeave={(event) => (event.currentTarget.style.opacity = "1")} style={{ border: 0, padding: 0, background: "transparent", transition: "opacity 0.1s" }}>
+            <IconTreeIcon name="star" color="#ff9500" size={24} />
+          </button>
         </div>
       </DemoBlock>
       <DemoBlock title="Violated — boxed icons" variant="violated">
         <div className="flex items-center gap-4">
           <div className="w-9 h-9 flex items-center justify-center bg-cream-dark ps-superellipse-32">
-            <Bell size={18} className="text-accent-blue" />
+            <IconTreeIcon name="notification" color="#0a84ff" size={18} />
           </div>
           <div className="w-9 h-9 flex items-center justify-center bg-cream-dark ps-superellipse-32">
-            <Heart size={18} className="text-accent-red" />
+            <IconTreeIcon name="heart" color="#ff3b30" size={18} />
           </div>
           <div className="w-9 h-9 flex items-center justify-center bg-cream-dark ps-superellipse-32">
-            <Star size={18} className="text-accent-orange" />
+            <IconTreeIcon name="star" color="#ff9500" size={18} />
           </div>
         </div>
       </DemoBlock>
@@ -223,7 +194,7 @@ function Demo8() {
     <LabDemo {...r(8)}>
       <DemoBlock title="Followed — slim 48px nav bar" variant="followed">
         <div className="w-full">
-          <div className="h-12 border-b border-border-light flex items-center justify-between px-3 bg-cream">
+          <div className="h-12 flex items-center justify-between px-3 bg-cream-dark">
             <span className="text-[14px] font-semibold">Logo</span>
             <div className="flex items-center gap-1">
               <span className="ps-nav-link text-[13px]">A</span>
@@ -237,7 +208,7 @@ function Demo8() {
       <DemoBlock title="Violated — bulky 96px nav" variant="violated">
         <div className="w-full">
           <div
-            className="border-b border-border-light flex items-center justify-between px-6 bg-cream"
+            className="flex items-center justify-between px-6 bg-cream-dark"
             style={{ height: "96px" }}
           >
             <span className="text-[24px] font-semibold">Logo</span>
@@ -297,8 +268,8 @@ function Demo10() {
     <LabDemo {...r(10)}>
       <DemoBlock title="Followed — consistent palette" variant="followed">
         <div className="flex flex-col gap-2 w-full">
-          <div className="p-2 border border-border-light ps-superellipse-32 bg-cream text-[13px]">Cream surface</div>
-          <div className="p-2 border border-border-light ps-superellipse-32 bg-surface text-[13px]">White surface</div>
+          <div className="p-2 ps-superellipse-32 bg-cream-dark text-[13px]">Cream surface</div>
+          <div className="p-2 ps-superellipse-32 bg-surface text-[13px]">White surface</div>
           <div className="flex gap-2">
             <div className="w-8 h-8 ps-superellipse-32" style={{ background: "var(--ps-blue)" }} />
             <div className="w-8 h-8 ps-superellipse-32" style={{ background: "var(--ps-green)" }} />
@@ -308,8 +279,8 @@ function Demo10() {
       </DemoBlock>
       <DemoBlock title="Violated — random colors" variant="violated">
         <div className="flex flex-col gap-2 w-full">
-          <div className="p-2 border ps-superellipse-32 text-[13px]" style={{ background: "#ff6b6b", borderColor: "#ff6b6b", color: "#fff" }}>Red surface</div>
-          <div className="p-2 border ps-superellipse-32 text-[13px]" style={{ background: "#4ecdc4", borderColor: "#4ecdc4", color: "#fff" }}>Teal surface</div>
+          <div className="p-2 ps-superellipse-32 text-[13px]" style={{ background: "#ff6b6b", color: "#fff" }}>Red surface</div>
+          <div className="p-2 ps-superellipse-32 text-[13px]" style={{ background: "#4ecdc4", color: "#fff" }}>Teal surface</div>
           <div className="flex gap-2">
             <div className="w-8 h-8 ps-superellipse-32" style={{ background: "#ff6b6b" }} />
             <div className="w-8 h-8 ps-superellipse-32" style={{ background: "#4ecdc4" }} />
@@ -327,11 +298,11 @@ function Demo11() {
       <DemoBlock title="Followed — inline icon + text" variant="followed">
         <div className="flex flex-col gap-2">
           <button className="ps-btn ps-btn-secondary ps-focus">
-            <Mail size={16} className="text-accent-blue" />
+            <IconTreeIcon name="message" color="#0a84ff" size={16} />
             Message
           </button>
           <button className="ps-btn ps-btn-outline ps-focus">
-            <Download size={16} className="text-accent-green" />
+            <IconTreeIcon name="document-download" color="#34c759" size={16} />
             Export
           </button>
         </div>
@@ -340,13 +311,13 @@ function Demo11() {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 flex items-center justify-center bg-cream-dark ps-superellipse-32">
-              <Mail size={16} className="text-accent-blue" />
+              <IconTreeIcon name="message" color="#0a84ff" size={16} />
             </div>
             <span className="text-[15px]">Message</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 flex items-center justify-center bg-cream-dark ps-superellipse-32">
-              <Download size={16} className="text-accent-green" />
+              <IconTreeIcon name="document-download" color="#34c759" size={16} />
             </div>
             <span className="text-[15px]">Export</span>
           </div>
@@ -416,13 +387,13 @@ function Demo13() {
 function Demo14() {
   return (
     <LabDemo {...r(14)}>
-      <DemoBlock title="Followed — no shadows" variant="followed">
+      <DemoBlock title="Followed — no outlines or shadows" variant="followed">
         <div className="flex flex-col gap-2 w-full">
-          <div className="p-3 border border-border-light ps-superellipse-32 bg-surface text-[13px]">
-            Card with outline only
+          <div className="p-3 ps-superellipse-32 bg-cream-dark text-[13px]">
+            Subtle off-color surface when needed
           </div>
-          <div className="p-3 border border-border-light ps-superellipse-32 bg-surface text-[13px]">
-            Another outlined card
+          <div className="p-3 ps-superellipse-32 bg-surface text-[13px]">
+            Standard surface
           </div>
         </div>
       </DemoBlock>
@@ -464,7 +435,7 @@ function Demo16() {
     <LabDemo {...r(16)}>
       <DemoBlock title="Followed — slim nav" variant="followed">
         <div className="w-full">
-          <div className="h-12 border-b border-border-light flex items-center px-3 gap-1 bg-cream">
+          <div className="h-12 flex items-center px-3 gap-1 bg-cream-dark">
             <span className="text-[13px] font-semibold mr-2">App</span>
             <span className="ps-nav-link text-[12px]">Home</span>
             <span className="ps-nav-link text-[12px]">Settings</span>
@@ -475,12 +446,12 @@ function Demo16() {
       <DemoBlock title="Violated — full-height nav" variant="violated">
         <div className="flex w-full" style={{ height: "140px" }}>
           <div
-            className="border-r border-border-light flex flex-col items-center py-4 gap-4"
+            className="bg-cream-dark flex flex-col items-center py-4 gap-4"
             style={{ width: "64px", background: "var(--ps-cream)" }}
           >
-            <Settings size={20} />
-            <Bell size={20} />
-            <User size={20} />
+            <IconTreeIcon name="setting" color="#1a1a1a" size={20} />
+            <IconTreeIcon name="notification" color="#1a1a1a" size={20} />
+            <IconTreeIcon name="profile" color="#1a1a1a" size={20} />
           </div>
           <div className="flex-1 p-2 text-[12px] text-ink-muted">Squeezed content</div>
         </div>
@@ -544,8 +515,8 @@ function Demo19() {
     <LabDemo {...r(19)}>
       <DemoBlock title="Followed — solid fills" variant="followed">
         <div className="flex flex-col gap-2 w-full">
-          <div className="p-2 border border-border-light ps-superellipse-32 bg-surface text-[13px]">Solid white</div>
-          <div className="p-2 border border-border-light ps-superellipse-32 bg-cream text-[13px]">Solid cream</div>
+          <div className="p-2 ps-superellipse-32 bg-surface text-[13px]">Solid white</div>
+          <div className="p-2 ps-superellipse-32 bg-cream-dark text-[13px]">Solid cream</div>
         </div>
       </DemoBlock>
       <DemoBlock title="Violated — gradient + blur" variant="violated">
@@ -592,7 +563,7 @@ function Demo21() {
     <LabDemo {...r(21)}>
       <DemoBlock title="Followed — specific, human copy" variant="followed">
         <p className="text-[15px] text-ink leading-relaxed text-center">
-          24 rules. Each one tested against a real interface. No fluff.
+          25 rules. Each one tested against a real interface. No fluff.
         </p>
       </DemoBlock>
       <DemoBlock title="Violated — AI generic tagline" variant="violated">
@@ -631,7 +602,7 @@ function Demo23() {
           {["A", "B", "C", "D"].map((x) => (
             <div
               key={x}
-              className="p-2 border border-border-light ps-superellipse-32 bg-surface text-center text-[13px] font-semibold"
+              className="p-2 ps-superellipse-32 bg-cream-dark text-center text-[13px] font-semibold"
             >
               {x}
             </div>
@@ -643,7 +614,7 @@ function Demo23() {
           {["A", "B", "C"].map((x) => (
             <div
               key={x}
-              className="p-2 border border-border-light ps-superellipse-32 bg-surface text-center text-[13px] font-semibold"
+              className="p-2 ps-superellipse-32 bg-cream-dark text-center text-[13px] font-semibold"
             >
               {x}
             </div>
@@ -659,11 +630,11 @@ function Demo24() {
     <LabDemo {...r(24)}>
       <DemoBlock title="Followed — H/2 + superellipse popup" variant="followed">
         <div
-          className="p-3 ps-superellipse-40 border border-border-light bg-surface flex flex-col gap-2"
+          className="p-3 ps-superellipse-40 bg-surface flex flex-col gap-2"
           style={{ width: "160px" }}
         >
           <div className="flex items-center gap-1.5">
-            <AlertTriangle size={15} className="text-accent-orange" />
+            <IconTreeIcon name="warning-2" color="#ff9500" size={15} />
             <span className="text-[14px] font-semibold">Confirm</span>
           </div>
           <span className="text-[13px] text-ink-muted">Delete this item?</span>
@@ -675,11 +646,11 @@ function Demo24() {
       </DemoBlock>
       <DemoBlock title="Violated — arbitrary 4px radius" variant="violated">
         <div
-          className="p-3 border border-border-light bg-surface flex flex-col gap-2"
+          className="p-3 bg-surface flex flex-col gap-2"
           style={{ width: "160px", borderRadius: "4px" }}
         >
           <div className="flex items-center gap-1.5">
-            <AlertTriangle size={15} className="text-accent-orange" />
+            <IconTreeIcon name="warning-2" color="#ff9500" size={15} />
             <span className="text-[14px] font-semibold">Confirm</span>
           </div>
           <span className="text-[13px] text-ink-muted">Delete this item?</span>
@@ -693,17 +664,36 @@ function Demo24() {
   );
 }
 
+function Demo25() {
+  return (
+    <LabDemo {...r(25)}>
+      <DemoBlock title="Followed — use spacing, add tint only if needed" variant="followed">
+        <div className="w-full flex flex-col gap-2">
+          <div className="p-3 ps-superellipse-32 bg-surface">Primary content</div>
+          <div className="p-3 ps-superellipse-32 bg-cream-dark">Secondary area, softly distinguished</div>
+        </div>
+      </DemoBlock>
+      <DemoBlock title="Violated — outline used for separation" variant="violated">
+        <div className="w-full flex flex-col gap-2">
+          <div className="p-3 ps-superellipse-32 bg-surface" style={{ outline: "1px solid var(--ps-border)" }}>Outlined content</div>
+          <div className="p-3 ps-superellipse-32 bg-surface">Another outlined area</div>
+        </div>
+      </DemoBlock>
+    </LabDemo>
+  );
+}
+
 const demos = [
   Demo1, Demo2, Demo3, Demo4, Demo5, Demo6, Demo7, Demo8,
   Demo9, Demo10, Demo11, Demo12, Demo13, Demo14, Demo15, Demo16,
-  Demo17, Demo18, Demo19, Demo20, Demo21, Demo22, Demo23, Demo24,
+  Demo17, Demo18, Demo19, Demo20, Demo21, Demo22, Demo23, Demo24, Demo25,
 ];
 
 export default function LabContent() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
-        <h2 className="text-[24px] font-semibold text-ink">The 24-Rule Lab</h2>
+        <h2 className="text-[24px] font-semibold text-ink">The 25-Rule Lab</h2>
         <p className="text-[15px] text-ink-muted max-w-[560px]">
           Each rule shown side by side: followed on the left, violated on the right.
           See exactly what Plainspoken prescribes and what it prohibits.

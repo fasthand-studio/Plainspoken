@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Check, X } from "lucide-react";
+import IconTreeIcon from "@/components/IconTreeIcon";
 
 interface DemoBlockProps {
   title: string;
@@ -13,9 +13,9 @@ export function DemoBlock({ title, children, variant }: DemoBlockProps) {
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-1.5">
         {isFollowed ? (
-          <Check size={15} className="text-accent-green" strokeWidth={2.5} />
+          <IconTreeIcon name="tick-circle" color="#34c759" size={15} />
         ) : (
-          <X size={15} className="text-accent-red" strokeWidth={2.5} />
+          <IconTreeIcon name="close-circle" color="#ff3b30" size={15} />
         )}
         <span
           className="text-[13px] font-semibold"
@@ -26,11 +26,7 @@ export function DemoBlock({ title, children, variant }: DemoBlockProps) {
       </div>
       <div
         className="ps-card p-4 flex-1 flex items-center justify-center min-h-[120px] overflow-hidden"
-        style={
-          !isFollowed
-            ? { borderColor: "var(--ps-red)", opacity: 0.95 }
-            : { borderColor: "var(--ps-border-light)" }
-        }
+        style={!isFollowed ? { background: "var(--ps-red-tint)", opacity: 0.95 } : undefined}
       >
         {children}
       </div>
@@ -62,10 +58,9 @@ export default function LabDemo({
               {String(id).padStart(2, "0")}
             </span>
             <span
-              className="text-[13px] font-semibold px-2 py-0.5 border"
+              className="text-[13px] font-semibold px-2 py-0.5"
               style={{
-                borderColor:
-                  category === "DO" ? "var(--ps-green)" : "var(--ps-red)",
+                background: category === "DO" ? "var(--ps-green-tint)" : "var(--ps-red-tint)",
                 color: category === "DO" ? "var(--ps-green)" : "var(--ps-red)",
                 borderRadius: "8px"
               }}

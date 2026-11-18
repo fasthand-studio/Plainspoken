@@ -1,227 +1,182 @@
-import { ArrowRight, BookOpen, FlaskConical, Layers, Check, X } from "lucide-react";
-import CopyButton from "@/components/CopyButton";
 import { rules } from "@/data/rules";
+import IconTreeIcon from "@/components/IconTreeIcon";
 
 interface LandingProps {
   onNavigate: (page: string) => void;
 }
 
+const principles = [
+  { n: "01", title: "Shape with intent", text: "One curvature system makes every control feel like it belongs." },
+  { n: "02", title: "Let space do the work", text: "Clear grouping and alignment create hierarchy without visual noise." },
+  { n: "03", title: "Color, used carefully", text: "Quiet surfaces carry the interface. Accent color earns its place." },
+  { n: "04", title: "Respond in the moment", text: "Feedback is immediate, useful, and never in the way." },
+];
+
 export default function Landing({ onNavigate }: LandingProps) {
-  const doCount = rules.filter((r) => r.category === "DO").length;
-  const dontCount = rules.filter((r) => r.category === "DON'T").length;
+  const doCount = rules.filter((rule) => rule.category === "DO").length;
+  const dontCount = rules.filter((rule) => rule.category === "DON'T").length;
 
   return (
-    <div className="flex flex-col">
-      {/* Hero */}
-      <section className="px-4 pt-20 pb-12 md:pt-24 md:pb-16">
-        <div className="max-w-[760px] mx-auto flex flex-col items-start gap-5">
-          <h1 className="text-[28px] md:text-[36px] font-semibold text-ink leading-tight">
-            A design system built on 24 rules.
-            <br />
-            Each one earned, not invented.
-          </h1>
-          <p className="text-[17px] text-ink-muted leading-relaxed max-w-[560px]">
-            Plainspoken is a UI/UX design system that trades decoration for clarity.
-            No shadows, no gradients, no fluff — just structure, restraint, and
-            consistency applied across every surface.
-          </p>
-          <div className="flex flex-wrap items-center gap-3 mt-2">
-            <button
-              onClick={() => onNavigate("lab")}
-              className="ps-cta ps-cta-primary ps-focus"
-            >
-              <FlaskConical size={18} />
-              Explore the Lab
-            </button>
-            <button
-              onClick={() => onNavigate("rulebook")}
-              className="ps-cta ps-cta-outline ps-focus"
-            >
-              <BookOpen size={18} />
-              View the Rulebook
-            </button>
+    <div className="flex flex-col overflow-hidden">
+      <section className="px-4 pt-[calc(4rem+env(safe-area-inset-top,0px))] pb-10 md:pt-[calc(6rem+env(safe-area-inset-top,0px))] md:pb-16">
+        <div className="mx-auto grid max-w-[1120px] items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+          <div className="flex flex-col items-start gap-5">
+            <h1 className="max-w-[680px] text-[38px] font-semibold leading-[1.06] tracking-[-0.04em] text-ink sm:text-[48px] md:text-[52px]">
+              Calm, clear interfaces for Fasthand.
+            </h1>
+            <p className="text-[15px] font-medium text-ink-muted">Plainspoken design system · 25 practical rules</p>
+            <p className="max-w-[520px] text-[17px] leading-relaxed text-ink-muted md:text-[19px]">
+              Plainspoken is made for the Fasthand ecosystem: readable screens, consistent geometry, and thoughtful interactions that are comfortable to look at and get out of your way.
+            </p>
+            <div className="mt-1 flex flex-wrap items-center gap-3">
+              <button onClick={() => onNavigate("lab")} className="ps-cta ps-cta-primary ps-focus">
+                <IconTreeIcon name="grid-1" color="#ffffff" size={18} /> Explore the Lab
+              </button>
+              <button onClick={() => onNavigate("rulebook")} className="ps-cta ps-cta-outline ps-focus">
+                <IconTreeIcon name="book" color="#1a1a1a" size={18} /> Read the rules
+              </button>
+            </div>
+            <a href="#principles" className="mt-3 inline-flex items-center gap-2 text-[14px] font-medium text-ink-muted transition-colors hover:text-ink">
+              See the design principles <IconTreeIcon name="arrow-down" color="#6b6b6b" size={16} />
+            </a>
           </div>
-        </div>
-      </section>
 
-      {/* Rule count strip */}
-      <section className="px-4 pb-10">
-        <div className="max-w-[760px] mx-auto">
-          <div className="ps-card p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-6">
-              <div className="flex flex-col items-center">
-                <span className="text-[28px] font-semibold text-ink">{rules.length}</span>
-                <span className="text-[13px] text-ink-muted">Total rules</span>
+          <div className="relative mx-auto w-full max-w-[480px] lg:mr-0" aria-label="Preview of the Plainspoken interface style">
+            <div className="relative ps-superellipse-48 bg-cream-dark p-4 sm:p-7">
+              <div className="ps-superellipse-44 bg-surface p-5 sm:p-7">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-[14px] font-semibold text-ink">
+                    PLAINspoken
+                  </div>
+                  <span className="text-[12px] text-ink-muted">A quiet start</span>
+                </div>
+                <div className="mt-8">
+                  <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.03em] text-ink">Make room<br />for good work.</h2>
+                  <p className="mt-2 text-[13px] font-medium text-ink-muted">YOUR FOCUS</p>
+                  <p className="mt-3 max-w-[280px] text-[14px] leading-relaxed text-ink-muted">A little less noise. A little more space to think.</p>
+                </div>
+                  <div className="mt-7 flex items-center justify-between gap-3 rounded-2xl bg-cream px-4 py-3">
+                  <div className="flex items-center gap-3">
+                    <IconTreeIcon name="tick-circle" color="#34c759" size={18} />
+                    <span className="text-[14px] font-medium text-ink">Plan the next step</span>
+                  </div>
+                  <span className="text-[12px] text-ink-muted">2 min</span>
+                </div>
+                <div className="mt-5 flex items-center justify-between">
+                  <span className="text-[13px] text-ink-muted">One thing at a time.</span>
+                  <button className="ps-btn ps-btn-primary ps-focus">Begin <IconTreeIcon name="arrow-right" color="#ffffff" size={15} /></button>
+                </div>
               </div>
-              <div className="w-px h-10 bg-border-light" />
-              <div className="flex flex-col items-center">
-                <span className="text-[28px] font-semibold" style={{ color: "var(--ps-green)" }}>{doCount}</span>
-                <span className="text-[13px] text-ink-muted">DO</span>
-              </div>
-              <div className="w-px h-10 bg-border-light" />
-              <div className="flex flex-col items-center">
-                <span className="text-[28px] font-semibold" style={{ color: "var(--ps-red)" }}>{dontCount}</span>
-                <span className="text-[13px] text-ink-muted">DON'T</span>
+                <div className="flex flex-wrap items-center justify-between gap-2 px-2 pt-4 text-[12px] font-medium text-ink-muted">
+                <span>System sans</span><span>Soft contrast</span><span>Consistent shape</span><span>Instant response</span>
               </div>
             </div>
-            <button
-              onClick={() => onNavigate("lab")}
-              className="ps-btn ps-btn-secondary ps-focus"
-            >
-              See all 24
-              <ArrowRight size={16} />
-            </button>
           </div>
         </div>
       </section>
 
-      {/* What it is */}
-      <section className="px-4 py-10">
-        <div className="max-w-[760px] mx-auto flex flex-col gap-4">
-          <h2 className="text-[22px] font-semibold text-ink">What Plainspoken is</h2>
-          <p className="text-[17px] text-ink-muted leading-relaxed">
-            Plainspoken is a set of 24 concrete rules that govern how an interface
-            should look and behave. It covers geometry, typography, color, icon
-            treatment, navigation, motion, and layout — with a clear line between
-            what to do and what to avoid.
-          </p>
-          <p className="text-[17px] text-ink-muted leading-relaxed">
-            The system uses a continuous curvature model: every rounded element's
-            corner radius equals exactly half its rendered height, finished with a
-            1.5 superellipse. That single geometric rule keeps buttons, cards, and
-            popups visually consistent without any arbitrary radius values.
-          </p>
+      <section aria-label="Rulebook summary" className="px-4 py-8">
+        <div className="mx-auto flex max-w-[1120px] flex-col gap-5 ps-superellipse-48 bg-cream-dark p-5 sm:flex-row sm:items-center sm:justify-between sm:p-7">
+          <div>
+            <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-ink-muted">A small system, made practical</p>
+            <p className="mt-1 text-[20px] font-semibold tracking-[-0.02em] text-ink">{rules.length} clear rules. One considered experience.</p>
+          </div>
+          <div className="grid grid-cols-2 items-center gap-x-6 gap-y-3 sm:flex sm:gap-8">
+            <div><span className="block text-[25px] font-semibold text-ink">{doCount}</span><span className="text-[13px] text-ink-muted">Do</span></div>
+            <div><span className="block text-[25px] font-semibold text-ink">{dontCount}</span><span className="text-[13px] text-ink-muted">Don’t</span></div>
+            <div><span className="block text-[25px] font-semibold text-ink">1</span><span className="text-[13px] text-ink-muted">Coherent system</span></div>
+            <button onClick={() => onNavigate("rulebook")} className="ps-btn ps-btn-secondary ps-focus">Explore <IconTreeIcon name="arrow-right" color="#0a84ff" size={16} /></button>
+          </div>
         </div>
       </section>
 
-      {/* What you can explore — 4 items, not 3 */}
-      <section className="px-4 py-10">
-        <div className="max-w-[960px] mx-auto flex flex-col gap-4">
-          <h2 className="text-[22px] font-semibold text-ink">What you can explore</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              {
-                icon: <FlaskConical size={20} className="text-accent-blue" />,
-                title: "The Lab",
-                desc: "24 side-by-side demos showing each rule followed and violated.",
-                action: "Open Lab",
-                page: "lab",
-              },
-              {
-                icon: <BookOpen size={20} className="text-accent-green" />,
-                title: "The Rulebook",
-                desc: "Every rule in full text, ready to copy individually or entirely.",
-                action: "Open Rulebook",
-                page: "rulebook",
-              },
-              {
-                icon: <Layers size={20} className="text-accent-orange" />,
-                title: "The System",
-                desc: "Curvature, color, typography, and spacing tokens working as one.",
-                action: "Learn more",
-                page: "about",
-              },
-              {
-                icon: <Check size={20} className="text-accent-purple" />,
-                title: "DO vs DON'T",
-                desc: "13 prescriptive rules and 11 prohibitions, each with a visual test.",
-                action: "See the split",
-                page: "lab",
-              },
-            ].map((item) => (
-              <div key={item.title} className="ps-card p-4 flex flex-col gap-3">
-                <div className="flex items-center gap-2">
-                  {item.icon}
-                  <span className="text-[15px] font-semibold">{item.title}</span>
-                </div>
-                <p className="text-[14px] text-ink-muted leading-relaxed flex-1">{item.desc}</p>
-                <button
-                  onClick={() => onNavigate(item.page)}
-                  className="ps-btn ps-btn-outline ps-focus text-[14px] self-start"
-                >
-                  {item.action}
-                  <ArrowRight size={14} />
-                </button>
-              </div>
+      <section id="principles" className="scroll-mt-20 px-4 py-16 md:py-20">
+        <div className="mx-auto grid max-w-[1120px] gap-8 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
+          <div className="flex flex-col items-start gap-4">
+            <h2 className="text-[30px] font-semibold leading-tight tracking-[-0.035em] text-ink sm:text-[38px]">Less to fight.<br />More to feel.</h2>
+            <p className="max-w-[360px] text-[16px] leading-relaxed text-ink-muted">A calm interface is not an empty one. It is a place where every detail knows why it is there.</p>
+          </div>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {principles.map((principle) => (
+              <article key={principle.n} className="ps-superellipse-40 bg-surface p-5 sm:p-6">
+                <span className="text-[13px] font-semibold text-ink-muted">{principle.n}</span>
+                <h3 className="mt-5 text-[17px] font-semibold text-ink">{principle.title}</h3>
+                <p className="mt-2 text-[14px] leading-relaxed text-ink-muted">{principle.text}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why it exists */}
-      <section className="px-4 py-10">
-        <div className="max-w-[760px] mx-auto flex flex-col gap-4">
-          <h2 className="text-[22px] font-semibold text-ink">Why it exists</h2>
-          <p className="text-[17px] text-ink-muted leading-relaxed">
-            Most interfaces accumulate decoration over time — shadows for depth,
-            gradients for interest, animations for delight. Plainspoken argues the
-            opposite: depth comes from layout and borders, interest comes from
-            structure, and delight comes from instant, unimpeded response.
-          </p>
-          <p className="text-[17px] text-ink-muted leading-relaxed">
-            The 24 rules are deliberately small in number. Each one addresses a
-            specific decision a designer makes daily, and each one has a clear
-            visual test — you can see it followed and violated in the Lab.
-          </p>
-        </div>
-      </section>
-
-      {/* Preview: DO vs DON'T sample */}
-      <section className="px-4 py-10">
-        <div className="max-w-[760px] mx-auto flex flex-col gap-4">
-          <h2 className="text-[22px] font-semibold text-ink">A taste of the system</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="ps-card p-5 flex flex-col gap-3" style={{ borderColor: "var(--ps-border-light)" }}>
-              <div className="flex items-center gap-1.5">
-                <Check size={15} className="text-accent-green" strokeWidth={2.5} />
-                <span className="text-[13px] font-semibold" style={{ color: "var(--ps-green)" }}>DO</span>
-              </div>
-              <button className="ps-btn ps-btn-primary ps-focus self-start">Save changes</button>
-              <span className="text-[13px] text-ink-muted">Single-line, 32px height, r16 + superellipse(1.5)</span>
+      <section className="bg-cream-dark px-4 py-16 md:py-20">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div className="max-w-[540px]">
+              <h2 className="text-[30px] font-semibold leading-tight tracking-[-0.035em] text-ink sm:text-[38px]">See the thinking.<br />Try it for yourself.</h2>
             </div>
-            <div className="ps-card p-5 flex flex-col gap-3" style={{ borderColor: "var(--ps-red)" }}>
-              <div className="flex items-center gap-1.5">
-                <X size={15} className="text-accent-red" strokeWidth={2.5} />
-                <span className="text-[13px] font-semibold" style={{ color: "var(--ps-red)" }}>DON'T</span>
-              </div>
-              <button
-                className="ps-btn ps-btn-primary ps-focus self-start"
-                style={{ whiteSpace: "normal", lineHeight: 1.2, height: "auto", padding: "8px 16px", width: "120px" }}
-              >
-                Save all changes to server
-              </button>
-              <span className="text-[13px] text-ink-muted">Multi-line, no fixed height — compact and readable lost</span>
-            </div>
+            <p className="max-w-[340px] text-[15px] leading-relaxed text-ink-muted">Every principle is written plainly and shown in context, so your team can use it with confidence.</p>
+          </div>
+          <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            <article className="flex flex-col items-start ps-superellipse-40 bg-surface p-6">
+              <div className="flex items-center gap-2"><IconTreeIcon name="grid-1" color="#0a84ff" size={20} /><h3 className="text-[18px] font-semibold text-ink">The Lab</h3></div>
+              <p className="mt-2 flex-1 text-[14px] leading-relaxed text-ink-muted">Compare every rule followed and broken through practical interface examples.</p>
+              <button onClick={() => onNavigate("lab")} className="ps-btn ps-btn-secondary ps-focus mt-5">Explore examples <IconTreeIcon name="arrow-right" color="#0a84ff" size={15} /></button>
+            </article>
+            <article className="flex flex-col items-start ps-superellipse-40 bg-surface p-6">
+              <div className="flex items-center gap-2"><IconTreeIcon name="book" color="#34c759" size={20} /><h3 className="text-[18px] font-semibold text-ink">The Rulebook</h3></div>
+              <p className="mt-2 flex-1 text-[14px] leading-relaxed text-ink-muted">Read, copy, and share the complete design guidance for your next project.</p>
+              <button onClick={() => onNavigate("rulebook")} className="ps-btn ps-btn-secondary ps-focus mt-5">Read all 25 rules <IconTreeIcon name="arrow-right" color="#0a84ff" size={15} /></button>
+            </article>
+            <article className="flex flex-col items-start ps-superellipse-40 bg-surface p-6">
+              <div className="flex items-center gap-2"><IconTreeIcon name="layer" color="#ff9500" size={20} /><h3 className="text-[18px] font-semibold text-ink">The system</h3></div>
+              <p className="mt-2 flex-1 text-[14px] leading-relaxed text-ink-muted">Understand the shared geometry, typography, color, and interaction foundations.</p>
+              <button onClick={() => onNavigate("about")} className="ps-btn ps-btn-secondary ps-focus mt-5">See the foundations <IconTreeIcon name="arrow-right" color="#0a84ff" size={15} /></button>
+            </article>
+            <article className="flex flex-col items-start ps-superellipse-40 bg-surface p-6">
+              <div className="flex items-center gap-2"><IconTreeIcon name="magic-star" color="#af52de" size={20} /><h3 className="text-[18px] font-semibold text-ink">The principles</h3></div>
+              <p className="mt-2 flex-1 text-[14px] leading-relaxed text-ink-muted">Get the reasoning behind a calmer, more readable interface, from hierarchy to feedback.</p>
+              <a href="#principles" className="ps-btn ps-btn-secondary ps-focus mt-5">Explore principles <IconTreeIcon name="arrow-right" color="#0a84ff" size={15} /></a>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="px-4 py-12">
-        <div className="max-w-[760px] mx-auto">
-          <div className="ps-card p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex flex-col gap-1">
-              <span className="text-[19px] font-semibold text-ink">Ready to see all 24 rules in action?</span>
-              <span className="text-[14px] text-ink-muted">The Lab shows every rule followed and violated.</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <button onClick={() => onNavigate("lab")} className="ps-cta ps-cta-primary ps-focus">
-                <FlaskConical size={18} />
-                Enter the Lab
-              </button>
-            </div>
+      <section className="px-4 py-16 md:py-20">
+        <div className="mx-auto grid max-w-[920px] gap-8 md:grid-cols-[0.7fr_1.3fr]">
+          <div>
+            <h2 className="text-[28px] font-semibold leading-tight tracking-[-0.03em] text-ink">Plainspoken, explained</h2>
+          </div>
+          <div className="flex flex-col gap-6">
+            <article>
+              <h3 className="text-[16px] font-semibold text-ink">What is the Plainspoken design system?</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-muted">Plainspoken is a set of 25 practical interface design rules made for the Fasthand ecosystem. The Lab demonstrates them, and the Rulebook makes them easy to copy and apply.</p>
+            </article>
+            <article>
+              <h3 className="text-[16px] font-semibold text-ink">What makes Plainspoken different?</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-muted">It favors clear layout, restrained color, system typography, consistent curvature, and immediate feedback. Off-color surfaces are used sparingly when they make content easier to understand.</p>
+            </article>
+            <article>
+              <h3 className="text-[16px] font-semibold text-ink">Who is Plainspoken for?</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-muted">It is for Fasthand teams and collaborators creating calm, coherent digital products, and for anyone who wants a straightforward starting point for interface decisions.</p>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* Footer credit */}
-      <footer className="px-4 py-8 border-t border-border-light">
-        <div className="max-w-[760px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-1.5">
-            <span className="text-[15px] font-semibold text-ink">PLAIN</span>
-            <span className="text-[15px] text-ink-muted">spoken</span>
+      <section className="px-4 pb-16">
+        <div className="mx-auto flex max-w-[1120px] flex-col gap-5 ps-superellipse-48 bg-cream-dark p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div>
+            <h2 className="text-[24px] font-semibold tracking-[-0.025em] text-ink">Make the next screen feel considered.</h2>
+            <p className="mt-2 text-[15px] text-ink-muted">Start with the rules. Leave room for the good work.</p>
           </div>
-          <span className="text-[14px] text-ink-muted">Made by Fasthand Studio.</span>
+          <button onClick={() => onNavigate("lab")} className="ps-cta ps-cta-primary ps-focus self-start sm:self-auto"><IconTreeIcon name="grid-1" color="#ffffff" size={18} /> Explore the Lab</button>
+        </div>
+      </section>
+
+      <footer className="px-4 pb-[calc(2rem+env(safe-area-inset-bottom,0px))]">
+        <div className="mx-auto flex max-w-[1120px] flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[14px] font-semibold text-ink">PLAINspoken <span className="font-normal text-ink-muted">by Fasthand Studio</span></p>
+          <p className="text-[13px] text-ink-muted">Calm by design. Clever by nature.</p>
         </div>
       </footer>
     </div>

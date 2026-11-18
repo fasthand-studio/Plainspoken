@@ -16,11 +16,11 @@ function App() {
   };
 
   useEffect(() => {
-    document.title = "PLAINspoken — Design System by Fasthand Studio";
+    document.title = "Plainspoken Design System for Clear Interfaces | Fasthand";
   }, []);
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="ps-app-shell bg-cream">
       <Nav current={page} onNavigate={handleNavigate} />
       <main>
         {page === "home" && <Landing onNavigate={handleNavigate} />}

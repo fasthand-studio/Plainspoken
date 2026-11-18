@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
-import { Check, Copy } from "lucide-react";
+import { useState, useCallback, useId } from "react";
+import IconTreeIcon from "@/components/IconTreeIcon";
 
 interface CopyButtonProps {
   text: string;
@@ -17,6 +17,7 @@ export default function CopyButton({
   className = "",
 }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
+  const iconBindId = `copy-button-${useId()}`;
 
   const handleCopy = useCallback(async () => {
     try {
@@ -44,21 +45,14 @@ export default function CopyButton({
 
   return (
     <button
+      id={iconBindId}
       onClick={handleCopy}
       className={`${baseClass} ${className}`}
       aria-label={copied ? `${copiedLabel}` : `${label}`}
     >
-      {copied ? (
-        <>
-          <Check size={16} strokeWidth={2.5} />
-          {copiedLabel}
-        </>
-      ) : (
-        <>
-          <Copy size={16} strokeWidth={2} />
-          {label}
-        </>
-      )}
+      <IconTreeIcon name="copy" color={variant === "cta" ? "#ffffff" : "#0a84ff"} size={16} mode="onClick" bindId={iconBindId} />
+      {copied && <IconTreeIcon name="tick-circle" color={variant === "cta" ? "#ffffff" : "#34c759"} size={16} />}
+      {copied ? copiedLabel : label}
     </button>
   );
 }

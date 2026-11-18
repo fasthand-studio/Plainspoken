@@ -39,14 +39,14 @@ export const rules: Rule[] = [
   {
     id: 6,
     category: "DO",
-    name: "Outlines for depth",
-    text: "Outlines for depth. Use subtle 1px gray borders to define boundaries rather than drop shadows. This keeps the interface modern while providing explicit visual separation between elements and the background.",
+    name: "Surface contrast for depth",
+    text: "Surface contrast for depth. Use layout and subtle off-color surface fills to distinguish adjacent areas. Keep surfaces the same color unless a difference is needed for clarity; never add outlines or borders for decoration.",
   },
   {
     id: 7,
     category: "DO",
     name: "Direct icon coloring & micro-interactions",
-    text: "Direct icon coloring & micro-interactions. Use glyphs directly using system accent colors (blue, green, orange, purple, red) without background box containers, and use restrained feedback such as instant opacity shifts, active background tints, clear focus rings, or lightweight Lottie hover/interaction animations. Feedback should feel immediate, delightful, and never delay the user's next action or add visual clutter.",
+    text: "Direct icon coloring & micro-interactions. Use glyphs directly using system accent colors (blue, green, orange, purple, red) without background box containers, and use restrained feedback such as instant opacity shifts, subtle focus color changes, or lightweight Lottie hover/interaction animations. Feedback should feel immediate, delightful, and never delay the user's next action or add visual clutter.",
   },
   {
     id: 8,
@@ -58,7 +58,7 @@ export const rules: Rule[] = [
     id: 9,
     category: "DO",
     name: "Hierarchy through style",
-    text: "Hierarchy through style. Distinguish the preferred action by prominence, not by size. Keep a single tinted style for secondary actions, outline or plain for the rest, and reserve destructive red strictly for delete or warning actions.",
+    text: "Hierarchy through style. Distinguish the preferred action by prominence, not by size. Use a single tinted style for secondary actions, plain styling for other actions, and reserve destructive red strictly for delete or warning actions. Do not use outlined buttons.",
   },
   {
     id: 10,
@@ -76,7 +76,7 @@ export const rules: Rule[] = [
     id: 12,
     category: "DO",
     name: "Button sizing and curvature hierarchy",
-    text: "Button sizing and curvature hierarchy. Apply the same continuous curvature geometry to every rounded interactive button in the system. The corner radius must always equal exactly half of the button's final rendered height, followed by a 1.5 superellipse curvature. Do not use arbitrary fixed radii, border-radius: 9999px, or border-radius: 50% as substitutes for this rule. Establish an explicit final height where necessary so the geometry is deterministic. Standard, secondary, outline, and inline actions use 32px height with a 16px base radius; medium functional calls to action use 44px height with a 22px base radius. Apply corner-shape: superellipse(1.5) consistently to all button variants, including header/nav buttons, CTAs, small buttons, demo buttons, mobile buttons, popup/dialog buttons, and other rounded interactive controls. Preserve the same geometry across responsive states.",
+    text: "Button sizing and curvature hierarchy. Apply the same continuous curvature geometry to every rounded interactive button in the system. The corner radius must always equal exactly half of the button's final rendered height, followed by a 1.5 superellipse curvature. Do not use arbitrary fixed radii, border-radius: 9999px, or border-radius: 50% as substitutes for this rule. Establish an explicit final height where necessary so the geometry is deterministic. Primary, secondary, plain, and inline actions use 32px height with a 16px base radius; medium functional calls to action use 44px height with a 22px base radius. Apply corner-shape: superellipse(1.5) consistently to all button variants, including header/nav buttons, CTAs, small buttons, demo buttons, mobile buttons, popup/dialog buttons, and other rounded interactive controls. Preserve the same geometry across responsive states.",
   },
   {
     id: 13,
@@ -88,7 +88,7 @@ export const rules: Rule[] = [
     id: 14,
     category: "DON'T",
     name: "No drop shadows",
-    text: "No drop shadows. Ensure there are no decorative shadows. Depth is achieved entirely through layout, alignment, and subtle 1px borders, preserving the clean interface.",
+    text: "No drop shadows. Ensure there are no decorative shadows. Use layout and, only when needed, subtle off-color surface fills to distinguish areas. Do not use outlines or borders for visual separation.",
   },
   {
     id: 15,
@@ -149,6 +149,12 @@ export const rules: Rule[] = [
     category: "DON'T",
     name: "No conventional popup or button corners",
     text: "No conventional popup or button corners. Do not give popups, sheets, dialogs, major floating surfaces, or rounded interactive controls arbitrary fixed corner radii. Use the same curvature geometry throughout: radius = half the final component height with superellipse(1.5) continuous curvature. Do not use border-radius: 9999px or border-radius: 50% as a replacement for the defined H/2 geometry. Ensure CSS specificity, responsive rules, padding, line-height, and component overrides do not break the intended curvature.",
+  },
+  {
+    id: 25,
+    category: "DON'T",
+    name: "No outlines; use off-color sparingly",
+    text: "No outlines; use off-color sparingly. Do not use outlines or borders to separate or decorate interface elements. Prefer spacing and alignment. Use a subtle off-color surface only when a visual distinction is truly needed, and keep it restrained.",
   },
 ];
 

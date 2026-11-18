@@ -1,11 +1,11 @@
 {
   "name": "PLAINspoken",
   "short_name": "PLAINspoken",
-  "description": "A UI/UX design system of 24 opinionated rules by Fasthand Studio.",
+  "description": "Fasthand Studio’s design system: 25 practical rules for calm, readable interfaces.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f5f3ef",
-  "theme_color": "#1a1a1a",
+  "theme_color": "#f5f3ef",
   "orientation": "portrait-primary",
   "icons": [
     {

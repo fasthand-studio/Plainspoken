@@ -1,5 +1,5 @@
-import { FlaskConical, BookOpen, Check, X } from "lucide-react";
 import { rules } from "@/data/rules";
+import IconTreeIcon from "@/components/IconTreeIcon";
 
 interface AboutProps {
   onNavigate: (page: string) => void;
@@ -10,13 +10,13 @@ export default function About({ onNavigate }: AboutProps) {
   const dontCount = rules.filter((r) => r.category === "DON'T").length;
 
   return (
-    <div className="px-4 pt-20 pb-12">
+    <div className="px-4 pt-[calc(5rem+env(safe-area-inset-top,0px))] pb-12">
       <div className="max-w-[760px] mx-auto flex flex-col gap-8">
         {/* Title */}
         <div className="flex flex-col gap-2">
           <h2 className="text-[24px] font-semibold text-ink">About Plainspoken</h2>
           <p className="text-[15px] text-ink-muted">
-            A design system of 24 rules, built to be seen, tested, and copied.
+            Made for the Fasthand ecosystem: 25 calm, clever rules for interfaces that are easy on the eyes.
           </p>
         </div>
 
@@ -24,8 +24,9 @@ export default function About({ onNavigate }: AboutProps) {
         <section className="flex flex-col gap-3">
           <h3 className="text-[19px] font-semibold text-ink">What it is</h3>
           <p className="text-[17px] text-ink-muted leading-relaxed">
-            Plainspoken is a UI/UX design system consisting of exactly 24 rules —
-            13 prescriptive (DO) and 11 prohibitive (DON'T). Each rule addresses a
+            Plainspoken is a calm, clever UI/UX design system made for the Fasthand
+            ecosystem, consisting of exactly 25 rules —
+            13 prescriptive (DO) and 12 prohibitive (DON'T). Each rule addresses a
             specific visual or interaction decision: button geometry, typography,
             color usage, icon treatment, navigation density, motion, and layout.
           </p>
@@ -41,10 +42,10 @@ export default function About({ onNavigate }: AboutProps) {
         <section className="flex flex-col gap-3">
           <h3 className="text-[19px] font-semibold text-ink">Why it exists</h3>
           <p className="text-[17px] text-ink-muted leading-relaxed">
-            Plainspoken replaces decoration with structure. Depth comes from 1px
-            borders and layout — never drop shadows. Interest comes from consistent
-            color and geometry — never gradients or blur. Delight comes from
-            instant feedback — never heavy animations that delay the user.
+            Plainspoken replaces decoration with structure. Depth comes from layout
+            and subtle off-color surfaces only when needed — never borders or
+            shadows. Consistent color and geometry keep screens comfortable to
+            look at, while instant feedback keeps them feeling clever and alive.
           </p>
           <p className="text-[17px] text-ink-muted leading-relaxed">
             The rules are few on purpose. Each one can be visually tested: you can
@@ -55,11 +56,11 @@ export default function About({ onNavigate }: AboutProps) {
 
         {/* The split */}
         <section className="flex flex-col gap-3">
-          <h3 className="text-[19px] font-semibold text-ink">The 24 rules</h3>
+          <h3 className="text-[19px] font-semibold text-ink">The 25 rules</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="ps-card p-4 flex flex-col gap-2" style={{ borderColor: "var(--ps-border-light)" }}>
+            <div className="ps-card p-4 flex flex-col gap-2">
               <div className="flex items-center gap-1.5">
-                <Check size={16} className="text-accent-green" strokeWidth={2.5} />
+                <IconTreeIcon name="tick-circle" color="#34c759" size={16} />
                 <span className="text-[15px] font-semibold" style={{ color: "var(--ps-green)" }}>DO — {doCount} rules</span>
               </div>
               <p className="text-[14px] text-ink-muted leading-relaxed">
@@ -67,15 +68,15 @@ export default function About({ onNavigate }: AboutProps) {
                 typography, color, icons, navigation, hierarchy, and spacing.
               </p>
             </div>
-            <div className="ps-card p-4 flex flex-col gap-2" style={{ borderColor: "var(--ps-border-light)" }}>
+            <div className="ps-card p-4 flex flex-col gap-2">
               <div className="flex items-center gap-1.5">
-                <X size={16} className="text-accent-red" strokeWidth={2.5} />
+                <IconTreeIcon name="close-circle" color="#ff3b30" size={16} />
                 <span className="text-[15px] font-semibold" style={{ color: "var(--ps-red)" }}>DON'T — {dontCount} rules</span>
               </div>
               <p className="text-[14px] text-ink-muted leading-relaxed">
                 Prohibitions: what to avoid. No shadows, no heavy animation, no
                 custom fonts, no gradients, no chip tags before headers, no groups
-                of three.
+                of three, and no outlines.
               </p>
             </div>
           </div>
@@ -86,11 +87,11 @@ export default function About({ onNavigate }: AboutProps) {
           <h3 className="text-[19px] font-semibold text-ink">Explore</h3>
           <div className="flex flex-wrap items-center gap-3">
             <button onClick={() => onNavigate("lab")} className="ps-cta ps-cta-primary ps-focus">
-              <FlaskConical size={18} />
+              <IconTreeIcon name="grid-1" color="#ffffff" size={18} />
               Open the Lab
             </button>
             <button onClick={() => onNavigate("rulebook")} className="ps-cta ps-cta-outline ps-focus">
-              <BookOpen size={18} />
+              <IconTreeIcon name="book" color="#1a1a1a" size={18} />
               Read the Rulebook
             </button>
           </div>
