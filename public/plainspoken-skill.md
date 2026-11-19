@@ -1,18 +1,18 @@
 ---
 name: plainspoken
-description: Apply Hasibul's PLAINspoken app UI design system (explicit half-height radius with superellipse 1.5 capsule geometry, system sans typography, no shadows, no outlines or borders, muted creamy neutral palette, slim navigation, no heavy animation) whenever building, styling, or reviewing UI — buttons, cards, popups, inputs, navigation bars, color palettes, typography, icons, or layout. Use this skill before writing any HTML/CSS/React aiming for a polished native-feeling interface, and when reviewing existing UI for consistency with this design language.
+description: Apply Hasibul's PLAINspoken app UI design system (explicit half-height radius with superellipse 1.5 capsule geometry, system sans typography, no shadows, no outlines or borders except on text fields and comparison layouts, muted creamy neutral palette, slim navigation, no heavy animation) whenever building, styling, or reviewing UI — buttons, cards, popups, inputs, navigation bars, color palettes, typography, icons, or layout. Use this skill before writing any HTML/CSS/React aiming for a polished native-feeling interface, and when reviewing existing UI for consistency with this design language.
 ---
 
 # PLAINspoken — Design System Rulebook
 
-Made by Fasthand Studio. A 25-rule DO/DON'T design system for building interfaces: continuous-curvature capsule components (explicit half-height radius + superellipse 1.5), native system typography, flat borderless surfaces (no shadows, outlines, blurs, or gradients), and restrained motion.
+Made by Fasthand Studio. A 25-rule DO/DON'T design system for building interfaces: continuous-curvature capsule components (explicit half-height radius + superellipse 1.5), native system typography, flat borderless surfaces (no shadows, blurs, or gradients; outlines only on text fields and comparison layouts), and restrained motion.
 
 ## Quick reference
 
 - Radius = exactly half the final rendered height, plus `corner-shape: superellipse(1.5)`. Never `50%` or `9999px`.
 - Small buttons: 32px tall, `border-radius: 16px`. Medium functional CTAs: 44px tall, `border-radius: 22px`.
 - Text: system sans only. Body 17px regular, buttons 17px semibold, supporting text muted gray.
-- No shadows, no outlines, no borders, no blurs, no large gradients. Separate areas with layout and, only if needed, a subtle off-color surface fill.
+- No shadows, no blurs, no large gradients. Outlines and borders only for text fields/inputs and a subtle divider in comparison layouts; everywhere else separate areas with layout and, only if needed, a subtle off-color surface fill.
 - Icons: system accent colors, no background boxes, paired inline with a label.
 
 ```css
@@ -79,4 +79,4 @@ Made by Fasthand Studio. A 25-rule DO/DON'T design system for building interface
 
 24. **No conventional popup or button corners.** Do not give popups, sheets, dialogs, major floating surfaces, or rounded interactive controls arbitrary fixed corner radii. Use the same curvature geometry throughout: radius = half the final component height with superellipse(1.5) continuous curvature. Do not use `border-radius: 9999px` or `border-radius: 50%` as a replacement for the defined H/2 geometry. Ensure CSS specificity, responsive rules, padding, line-height, and component overrides do not break the intended curvature.
 
-25. **No outlines; use off-color sparingly.** Do not use outlines or borders to separate or decorate interface elements. Prefer spacing and alignment. Use a subtle off-color surface only when a visual distinction is truly needed, and keep it restrained.
+25. **Text fields and comparison outlines only.** Use outlines exclusively for text fields and input elements where they help define clear interaction boundaries. For all other UI elements, avoid outlines and borders. An exception is comparison layouts, where a subtle center divider or outline may be used to visually distinguish the compared sections. Prefer spacing, alignment, and hierarchy everywhere else.

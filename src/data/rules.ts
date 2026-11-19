@@ -153,8 +153,8 @@ export const rules: Rule[] = [
   {
     id: 25,
     category: "DON'T",
-    name: "No outlines; use off-color sparingly",
-    text: "No outlines; use off-color sparingly. Do not use outlines or borders to separate or decorate interface elements. Prefer spacing and alignment. Use a subtle off-color surface only when a visual distinction is truly needed, and keep it restrained.",
+    name: "Text fields and comparison outlines only",
+    text: "Text fields and comparison outlines only. Use outlines exclusively for text fields and input elements where they help define clear interaction boundaries. For all other UI elements, avoid outlines and borders. An exception is comparison layouts, where a subtle center divider or outline may be used to visually distinguish the compared sections. Prefer spacing, alignment, and hierarchy everywhere else.",
   },
 ];
 
