@@ -667,25 +667,63 @@ function Demo24() {
 function Demo25() {
   return (
     <LabDemo {...r(25)}>
-      <DemoBlock title="Followed — text field + comparison divider" variant="followed">
+      <DemoBlock title="Followed — outline only where it belongs" variant="followed">
         <div className="w-full flex flex-col gap-3">
-          <input
-            className="ps-input w-full"
-            aria-label="Email address"
-            placeholder="Email address"
-            readOnly
-            style={{ outline: "1px solid var(--ps-border)" }}
-          />
-          <div className="flex text-[13px] text-ink">
-            <div className="flex-1 p-2 text-center">Basic</div>
-            <div className="flex-1 p-2 text-center border-l border-border-light">Pro</div>
+          <div className="flex flex-col gap-1">
+            <input
+              className="ps-input w-full"
+              aria-label="Email address"
+              placeholder="you@example.com"
+              readOnly
+              style={{ outline: "2px solid var(--ps-blue)" }}
+            />
+            <span className="text-[12px] text-ink-muted">
+              Text field — the outline marks the input boundary ✓
+            </span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <div
+              className="flex text-[13px] text-ink ps-superellipse-32 overflow-hidden"
+              style={{ outline: "1px solid var(--ps-border-light)" }}
+            >
+              <div className="flex-1 p-2 text-center">Basic</div>
+              <div
+                className="flex-1 p-2 text-center"
+                style={{ borderLeft: "1px solid var(--ps-border-light)" }}
+              >
+                Pro
+              </div>
+            </div>
+            <span className="text-[12px] text-ink-muted">
+              Comparison — a subtle center divider separates the two sides ✓
+            </span>
           </div>
         </div>
       </DemoBlock>
-      <DemoBlock title="Violated — decorative outlines" variant="violated">
+      <DemoBlock title="Violated — outlines on other UI" variant="violated">
         <div className="w-full flex flex-col gap-2">
-          <div className="p-3 ps-superellipse-32 bg-surface" style={{ outline: "1px solid var(--ps-border)" }}>Outlined card</div>
-          <button className="ps-btn ps-btn-primary ps-focus" style={{ outline: "1px solid var(--ps-border)" }}>Outlined button</button>
+          <div className="flex flex-col gap-1">
+            <div
+              className="p-3 ps-superellipse-32 bg-surface text-[13px]"
+              style={{ outline: "2px solid var(--ps-red)" }}
+            >
+              Card
+            </div>
+            <span className="text-[12px] text-ink-muted">
+              A card should use spacing or tint, not an outline ✗
+            </span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <button
+              className="ps-btn ps-btn-primary ps-focus"
+              style={{ outline: "2px solid var(--ps-red)" }}
+            >
+              Button
+            </button>
+            <span className="text-[12px] text-ink-muted">
+              A button should use fill, not a decorative outline ✗
+            </span>
+          </div>
         </div>
       </DemoBlock>
     </LabDemo>
