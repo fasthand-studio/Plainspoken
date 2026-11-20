@@ -667,16 +667,25 @@ function Demo24() {
 function Demo25() {
   return (
     <LabDemo {...r(25)}>
-      <DemoBlock title="Followed — use spacing, add tint only if needed" variant="followed">
-        <div className="w-full flex flex-col gap-2">
-          <div className="p-3 ps-superellipse-32 bg-surface">Primary content</div>
-          <div className="p-3 ps-superellipse-32 bg-cream-dark">Secondary area, softly distinguished</div>
+      <DemoBlock title="Followed — text field + comparison divider" variant="followed">
+        <div className="w-full flex flex-col gap-3">
+          <input
+            className="ps-input w-full"
+            aria-label="Email address"
+            placeholder="Email address"
+            readOnly
+            style={{ outline: "1px solid var(--ps-border)" }}
+          />
+          <div className="flex text-[13px] text-ink">
+            <div className="flex-1 p-2 text-center">Basic</div>
+            <div className="flex-1 p-2 text-center border-l border-border-light">Pro</div>
+          </div>
         </div>
       </DemoBlock>
-      <DemoBlock title="Violated — outline used for separation" variant="violated">
+      <DemoBlock title="Violated — decorative outlines" variant="violated">
         <div className="w-full flex flex-col gap-2">
-          <div className="p-3 ps-superellipse-32 bg-surface" style={{ outline: "1px solid var(--ps-border)" }}>Outlined content</div>
-          <div className="p-3 ps-superellipse-32 bg-surface">Another outlined area</div>
+          <div className="p-3 ps-superellipse-32 bg-surface" style={{ outline: "1px solid var(--ps-border)" }}>Outlined card</div>
+          <button className="ps-btn ps-btn-primary ps-focus" style={{ outline: "1px solid var(--ps-border)" }}>Outlined button</button>
         </div>
       </DemoBlock>
     </LabDemo>
